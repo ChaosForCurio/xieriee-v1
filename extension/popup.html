@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xeriee Premium Creator</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <div class="header">
+      <div class="logo-area">
+        <svg width="24" height="24" viewBox="0 0 448 512" style="fill: var(--primary);">
+          <path
+            d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" />
+        </svg>
+        <h1>Xeriee</h1>
+      </div>
+      <div class="header-controls">
+        <div id="connectionBox" class="badge">Checking...</div>
+        <button id="themeToggle" class="theme-toggle" title="Toggle Dark Mode">
+          🌙
+        </button>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <div class="tab active" data-tab="create">Create Post</div>
+      <div class="tab" data-tab="history">History</div>
+    </div>
+
+    <!-- CREATE VIEW -->
+    <div id="view-create">
+      <!-- Controls -->
+      <div class="feature-grid">
+        <div class="card" style="margin:0;">
+          <label for="toneSelect">Tone</label>
+          <select id="toneSelect">
+            <option value="professional">Professional</option>
+            <option value="viral">Viral / Engaging</option>
+            <option value="story">Storytelling</option>
+            <option value="casual">Casual</option>
+            <option value="controversial">Controversial</option>
+          </select>
+        </div>
+        <div class="card" style="margin:0;">
+          <label for="formatSelect">Format</label>
+          <select id="formatSelect">
+            <option value="text">Standard Text</option>
+            <option value="bullet">Bullet Points</option>
+            <option value="carousel">Carousel (Slides)</option>
+            <option value="short">Short & Punchy</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="card">
+        <label>
+          Emoji Density
+          <span id="emojiVal" class="badge">Balanced</span>
+        </label>
+        <div class="slider-container">
+          <span>🚫</span>
+          <input type="range" id="emojiSlider" min="0" max="3" value="2" step="1">
+          <span>🤩</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <label for="trends">Trending Topic</label>
+        <select id="trends">
+          <option value="">Fetching trends...</option>
+        </select>
+      </div>
+
+      <div class="card">
+        <label for="prompt">
+          Your Idea
+          <span class="char-counter" id="charCounter">0/1300</span>
+        </label>
+        <div class="input-wrapper">
+          <textarea id="prompt" placeholder="Topic, URL, or draft thought..."></textarea>
+          <button id="voiceBtn" class="voice-btn" title="Voice Input">🎙️</button>
+        </div>
+        <div style="margin-top: 8px; display: flex; gap: 8px;">
+          <button id="hookBtn" class="btn-secondary" style="flex:1;">🪝 Geneate Hook</button>
+          <button id="hashtagsBtn" class="btn-secondary" style="flex:1;">#️⃣ Hashtags</button>
+        </div>
+      </div>
+
+      <button id="generateBtn" class="btn-main">
+        <span>✨ Generate Post</span>
+      </button>
+
+      <!-- Preview Section -->
+      <div id="preview" class="preview-section">
+        <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+          <label>Preview</label>
+          <span id="readabilityScore" class="score-indicator score-good">Grade 6 (Good)</span>
+        </div>
+
+        <div class="li-post-card">
+          <div id="resultText"></div>
+          <img id="resultImage" style="width:100%; margin-top:10px; border-radius:8px; display:none;" alt="Visual">
+        </div>
+
+        <!-- Refine Actions -->
+        <div class="actions-row">
+          <button class="btn-secondary refine-btn" data-action="shorten">Shorten</button>
+          <button class="btn-secondary refine-btn" data-action="expand">Expand</button>
+          <button class="btn-secondary refine-btn" data-action="fix">Fix Grammar</button>
+          <button class="btn-secondary refine-btn" data-action="funnier">Make Funnier</button>
+        </div>
+
+        <div class="actions-row" style="margin-top:16px;">
+          <button id="postBtn" class="btn-main" style="background: var(--success); flex: 2;">
+            🚀 Post to LinkedIn
+          </button>
+          <button id="copyBtn" class="btn-secondary" style="flex: 1;">📋 Copy</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- HISTORY VIEW -->
+    <div id="view-history" class="hidden">
+      <div id="historyList" style="display:flex; flex-direction:column; gap:10px;">
+        <div class="card" style="text-align:center; color:var(--text-muted);">No history yet</div>
+      </div>
+      <button id="clearHistory" class="btn-secondary" style="width:100%; margin-top:20px;">Clear History</button>
+    </div>
+
+  </div>
+  <script src="popup.js"></script>
+</body>
+
+</html>
